@@ -19,4 +19,7 @@ How JDBC Works-
      Check krna ho to open cmd and type java -verison. version show krdega.
    
    2. Now needed a Database
+   https://www.youtube.com/watch?v=sm7Fe609ilE   Use this video to download asn set the workbench or sql database.
+   
+   3. Now we are using mysql to hme mysql ka driver chahiye iske driver ko bolte h mysql-connector
    
