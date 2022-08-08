@@ -10,4 +10,13 @@ How JDBC Works-
   >------------------------------------JDBC Architecture-------------------------------------------------<
   
   To concept ye h ki hmare paas java application h or hmee data store krna h DB m, mtlb query likhne k liye hme JDBC API ki need pdegi ko connectivity k liye drivers ki
-  jisse ki hmare app ki query drivers k through connect hokr Database s interact kr skeee.
+  jisse ki hmare app ki query drivers k through connect hokr Database s interact kr skeee. */
+
+// How to set drivers in classpath
+/* 1. Install JDK and set path.(Write JDK in chrome and download as per the system). [https://www.youtube.com/watch?v=UGH5FTd4Wvc]
+     Path set krne k liye environment variable m system variable k andar path name k variable k andar jdk k bin tak ki location s set krdo.
+     Fir JAVA_HOME k name s banao ek variable system variable k andar hi, usme bin s pehle step tak ki path location m set krdo yeahhhhhhhhhhhhhh path set hamara fir.
+     Check krna ho to open cmd and type java -verison. version show krdega.
+   
+   2. Now needed a Database
+   
