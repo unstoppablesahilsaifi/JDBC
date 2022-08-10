@@ -49,7 +49,8 @@ How JDBC Works-
                   Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname","root","root");
                  To check the port number u'll see port number.
                    
-3.Create Query:
+3.Create Query:statement(for normal query), PreparedStatement(for complex query which has some symbols like this-> ?),CallableStatement(For Stored procedure kind of).
+                
                
                
 
