@@ -69,6 +69,49 @@ How JDBC Works-
                         con.close();
 
 
+
+//Complete executable programm:
+
+// this program  is for JDBC
+import java.sql.*;// must use this
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+class FirstJdbc
+{
+	public static void main(String args[])
+	{
+		try{
+           //load the driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+            // To check whether the connection is created or not
+			if(con.isClosed())
+			{
+				System.out.println("Connection is closed");
+			}
+			else 
+			{
+				System.out.println("Connection is created");
+			}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+O/P- Connection is Created
+
                
             
 
