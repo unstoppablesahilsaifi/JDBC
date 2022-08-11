@@ -50,9 +50,27 @@ How JDBC Works-
                  To check the port number u'll see port number.
                    
 3.Create Query:statement(for normal query), PreparedStatement(for complex query which has some symbols like this-> ?),CallableStatement(For Stored procedure kind of).
-                
+              // Suppose We have a query 
+              String q="select * from student"; (Normal query h to Statement use hoga)
+// ab hme nikalna hoga statement ka object, statement ka object hme dega connection,jo connection hmara bna tha vo con vale variable m h.
+              Statement stmt=con.createStatement(); (Hm query ko fire kr sakte h stmt ki help s)
+                ResultSet set=stmt.executeQuery(q);// agar insert update ya delete ki query h to execute query ki jagah update Query use hoga or return type int hoga
+                                                   // iska na ki ResultSet kyuki data update vgera ho rha h na ki select(aa rha h )
+
+4. Process the Data:
+                    while(set.next())  // set s puchenge ki next row khaa h uske hisab s next row pe jayga, tabhi to puri table aaygi
+                    {
+                      int id=set.getInt("column_number ya col name paas krdo");
+                      String name=set.getString("stuName");
+                      sout(id);
+                      sout(name);
+                    }
+5. Close the Connection:
+                        con.close();
+
+
                
-               
+            
 
 
 
