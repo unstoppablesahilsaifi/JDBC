@@ -196,4 +196,58 @@ public class InsertData
 	}
 }
      
+
+++++++++++++++++++++++++++++++++++
+//Program for Dynamic data lene k iiye user s
+	
+import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.*;
+public class DynaData
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+
+			// Create a query
+			String q="insert into table_1(tName,tCity) values(?,?)";  // ?,? iska mtlb yha ye h ki dynamic input liya jayga hm pehle s kuch nhi de rhe h 
+			// get the preparedStatement object
+			PreparedStatement pstmt=con.prepareStatement(q);
+
+			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));// ye input lene k liye h JDBC m
+			System.out.println("Enter Name");
+			String name=br.readLine();// Yha s read hoga input data jo enter kiya gya h 
+			System.out.println("Enter City");
+			String city=br.readLine();
+
+			// set the values to query
+			pstmt.setString(1,name);// yha pe jo read kiye gye data h vo set kiye jaynge jaise uper name read hua tha vo read yha per paas hoga same for the city
+
+			pstmt.setString(2,city);
+			pstmt.executeUpdate();
+			System.out.println("Inserted"); 
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+
+
    
