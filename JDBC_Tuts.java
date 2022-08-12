@@ -112,7 +112,48 @@ class FirstJdbc
 
 O/P- Connection is Created
 
-               
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// Table Creation
+
+import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class InsertJdbc
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+
+			// Create a query
+			String q="create table table_1(tId int(20) primary key auto_increment,tName varchar(200) not null,tCity varchar(200))";
+			// Now Create a statement:
+			Statement stmt=con.createStatement();
+			stmt.executeUpdate(q);
+			System.out.println("Table Created in Database");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+// To check open sql termminal-> show databases;-> use utube;-> show tables;-> desc table_1;
+
             
 
 
