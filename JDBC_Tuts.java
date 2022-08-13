@@ -247,7 +247,46 @@ public class DynaData
 	}
 }
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+//Insert image In DB with the help of JDBC
 
+	import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.*;
+public class Img
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+
+			// Create a query
+			String q="insert into images(pic) values(?)";
+			PreparedStatement pstmt=con.prepareStatement(q);
+			FileInputStream fis=new FileInputStream("aaaaaa.jpg");
+			pstmt.setBinaryStream(1,fis,fis.available()); // 1 ka mtlb yha pe h 1st question mark k liye kaam ho rha h yha pe; and available mtlb ye h ki ye memeory vail kdega acc to pic;
+
+			pstmt.executeUpdate();
+			System.out.println("Done.........");
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
 
 
    
