@@ -290,6 +290,72 @@ public class Img
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Update data of table
+import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.*;
+public class Up
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+
+			// Create a query
+			String q="update table_1 set tName=?, tCity=? where tId=?";
+			BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Enter new name");
+			String name=br.readLine();
+			System.out.println("Enter new city");
+			String city=br.readLine();
+			System.out.println("Enter the ID");
+			int id=Integer.parseInt(br.readLine()); // input Sring m hi hota h to convert krna pdega interger m;
+
+			PreparedStatement pstmt=con.prepareStatement(q);
+			pstmt.setString(1,name);
+			pstmt.setString(2,city);
+			pstmt.setInt(3,id);
+			pstmt.executeUpdate();
+			
+			System.out.println("Done.........");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+O/P- 
+	
+	mysql> select * from table_1;
++-----+-------------+--------------+
+| tId | tName       | tCity        |
++-----+-------------+--------------+
+|   1 | Sahil Saifi | Delhi        |
+|   2 | Rishabh     | Yamuna_Vihar |
++-----+-------------+--------------+
+2 rows in set (0.37 sec)
+
+mysql> select * from table_1;
++-----+---------+--------------+
+| tId | tName   | tCity        |
++-----+---------+--------------+
+|   1 | Prakul  | Dayalpur     |
+|   2 | Rishabh | Yamuna_Vihar |
++-----+---------+--------------+
 	
 	
 	
