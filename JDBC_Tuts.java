@@ -359,4 +359,67 @@ mysql> select * from table_1;
 	
 	
 	
+++++++++++++++++++++++++++++++++++++++++++++++++++
+//Select Data using JDBC
+	
+	
+	
+	import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.*;
+public class Select
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+
+			// Create a query
+			String q="select * from table_1";
+			Statement stmt=con.createStatement();
+			ResultSet set=stmt.executeQuery(q); // jo data ye query la rhi h usee hm resultSet m store kr lenge;
+			// While ka loop chlega jitni rows hongi.
+			while(set.next())
+			{
+				int id=set.getInt(1); // 1 mtlb pehle column ki value ya column ka naam dedo;
+				String name=set.getString(2);
+				String city=set.getString(3);
+				System.out.println(name + " : " + id + " : " + city);
+
+			}
+
+		
+		
+			
+			System.out.println("Done.........");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+O/P-
+	
+	C:\Users\admin\Desktop>javac Select.java
+
+C:\Users\admin\Desktop>java Select
+Prakul : 1 : Dayalpur
+Rishabh : 2 : Yamuna_Vihar
+Done.........
+	
    
