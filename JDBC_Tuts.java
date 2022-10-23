@@ -23,7 +23,7 @@ How JDBC Works-
    
    3. Now we are using mysql to hme mysql ka driver chahiye iske driver ko bolte h mysql-connector.
      Please download the same version connector same as the verison of mysql.
-     To check the version of mysql-> open mysql client view-> type 
+     To check the version of mysql-> open mysql client view-> type -> \s
      // Basically jo driver hote h vo jar file hoti h 
      
      Ab Scene h ki driver download krke C drive m paste krdo jar file ko uske baad path copy kro jar file tak ka, environment variable m jake classpath name k varible
