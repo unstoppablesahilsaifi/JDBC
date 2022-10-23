@@ -422,4 +422,44 @@ Prakul : 1 : Dayalpur
 Rishabh : 2 : Yamuna_Vihar
 Done.........
 	
+// Delete the row
+	
+	import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.*;
+public class Delete
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/utube","root","root");
+
+			// Create a query
+			String q="delete from table_1 where tId=3";
+			
+	
+			PreparedStatement pstmt=con.prepareStatement(q);
+		
+			pstmt.executeUpdate();
+			
+			System.out.println("Deleted.......................");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
    
