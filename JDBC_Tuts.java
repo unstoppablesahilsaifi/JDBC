@@ -1,4 +1,4 @@
-/* From Learn code with Durgesh.
+/* From Learn code with Durgesh youtube
 JDBC- It is an standared API provided by oracle for java applications to interact with differ types of databases.
 
 How JDBC Works-
