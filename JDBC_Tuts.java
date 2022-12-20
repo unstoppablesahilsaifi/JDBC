@@ -463,3 +463,84 @@ public class Delete
 	}
 }
    
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//Create Database
+
+import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class CreateDB
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/","root","root");
+
+			// Create a query
+			String q="create database Registration_Module";
+			// Now Create a statement:
+			Statement stmt=con.createStatement();
+			stmt.executeUpdate(q);
+			System.out.println("Database created...");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class CreateTable
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/registration_module","root","root");
+
+			// Create a query
+			String q= "CREATE TABLE USER " +
+                   "(id INTEGER not NULL AUTO_INCREMENT, " +
+                   " name VARCHAR(255) not NULL, " + 
+                   " email VARCHAR(255), " + 
+                   " password VARCHAR(255), " +
+                   " PRIMARY KEY ( id ))";
+                   
+			// Now Create a statement:
+			Statement stmt=con.createStatement();
+			stmt.executeUpdate(q);
+			System.out.println("Tables Created.....");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
