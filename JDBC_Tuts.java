@@ -544,3 +544,45 @@ public class CreateTable
 		}
 	}
 }
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	
+//Alter Table
+	
+	
+import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+public class AlterTable
+{
+	public static void main(String args[])
+	{
+		try
+		{
+          	Class.forName("com.mysql.cj.jdbc.Driver");
+			//create connection
+			//String url= "jdbc:mysql://localhost:3306/utube";
+			//String username="root";
+			//String Password="root";
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/registration_module","root","root");
+
+			// Create a query
+			String q= "ALTER TABLE USER ADD ImageName VARCHAR(100)";
+			// Now Create a statement:
+			Statement stmt=con.createStatement();
+			stmt.executeUpdate(q);
+			System.out.println("Tables Altered.....");
+			con.close();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
+	
+	
+	
